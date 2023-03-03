@@ -91,7 +91,7 @@ UserRoute.get("/single/:id", async (req, res) => {
 });
 
 
-UserRoute.get("/random", (req, res) => {
+UserRoute.post("/random", (req, res) => {
   const {num} = req.body;
   try{
     let MAX = 26;
