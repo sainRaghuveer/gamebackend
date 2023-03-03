@@ -26,7 +26,7 @@ UserRoute.post("/register", async (req, res) => {
           user.save()
           res.status(200).json({
             success: true,
-            users,
+            user,
           })
         }
       });
