@@ -24,7 +24,6 @@ UserRoute.post("/register", async (req, res) => {
         else {
           const user = new UserModel({ name, email, password: hash })
           user.save()
-          res.send({ "msg": "User successfully registered" })
           res.status(200).json({
             success: true,
             users,
