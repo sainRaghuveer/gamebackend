@@ -78,7 +78,7 @@ UserRoute.get("/all", async (req, res) => {
 
 UserRoute.get("/single/:id", async (req, res) => {
   try {
-    const user=await UserModel.findById(req.params.id)
+    const user = await UserModel.findById(req.params.id)
     res.status(200).json({
       success: true,
       user,
@@ -88,6 +88,35 @@ UserRoute.get("/single/:id", async (req, res) => {
       success: false
     })
   }
+});
+
+
+UserRoute.get("/random", (req, res) => {
+  const {num} = req.body;
+  try{
+    let MAX = 26;
+  function printRandomString(num) {
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+      'h', 'i', 'j', 'k', 'l', 'm', 'n',
+      'o', 'p', 'q', 'r', 's', 't', 'u',
+      'v', 'w', 'x', 'y', 'z'];
+
+    let result = "";
+    for (let i = 0; i < num; i++) {
+      result = result + alphabet[Math.floor(Math.random() * 10) % MAX];
+    }
+    res.status(200).json({
+      success: true,
+      result,
+    })
+  }
+  printRandomString(num);
+  }catch(error){
+    res.status(400).json({
+      success: false
+    })
+  }
+  
 })
 
 module.exports = {
