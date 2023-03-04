@@ -46,7 +46,7 @@ UserRoute.post("/login", async (req, res) => {
       bcrypt.compare(password, user[0].password, function (err, result) {
         if (result) {
           var token = jwt.sign({ user: user[0]._id }, 'game', { expiresIn: "3h" })
-          res.send({ "msg": "Login Successful", "token": token })
+          res.send({ "msg": "Login Successful", "token": token,user:user })
         }
         else {
           res.send({ "msg": "wrong password" })
